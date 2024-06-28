@@ -1,3 +1,5 @@
+<!-- https://github.com/zhipanchen/page -->
+<!-- https://github.com/zhipanchen/page?sign=1 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,16 +10,24 @@
 <body>
     <!-- <p>You will be redirected to <a href="http://36.134.22.54:8081/">http://36.134.22.54:8081/</a> in 5 seconds.</p> -->
     <script>
+        const urls = [
+            'http://36.134.22.54:8081',
+            'http://36.134.22.54:8082',
+            '4041/404.html'
+        ]
+        const url404 = '404/404.html';
         const params = new URLSearchParams(window.location.search);
-        const param1 = params.get('sign');
-        if(param1 == "1"){
-            window.location.href = 'http://36.134.22.54:8081';
-        }else if(param1 == "2"){
-            window.location.href = 'http://36.134.22.54:8082';
-        }else if(param1 == "3"){
-            window.location.href = '4041/404.html';
-        }else{
-            window.location.href = '404/404.html';
+        const sign = params.get('sign');
+        var redirected = false;
+
+        for(var i = 1;i < urls.length+1;i++){
+            if(i == sign){
+                window.location.href = urls[i];
+                redirected = true
+            }
+        }
+        if(!redirected){
+            window.location.href = url404;
         }
     </script>
 </body>
