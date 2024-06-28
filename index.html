@@ -14,25 +14,25 @@
     <a href='4041/404.html'>跳到页面指定位置</a>
     <a href='404/404.html'>跳到页面指定位置</a>
     <script>
-        const urls = [
-            'http://36.134.22.54:8081',
-            'http://36.134.22.54:8082',
-            '4041/404.html'
-        ]
-        const url404 = '404/404.html';
-        const params = new URLSearchParams(window.location.search);
-        const sign = params.get('sign');
-        var redirected = false;
-
-        for(var i = 0;i < urls.length;i++){
-            if(i == sign){
-                window.location.href = urls[i];
-                redirected = true
-            }
-        }
-        if(!redirected){
-            window.location.href = url404;
-        }
+        // const urls = [
+        //     'http://36.134.22.54:8081',
+        //     'http://36.134.22.54:8082',
+        //     '4041/404.html'
+        // ]
+        // const url404 = '404/404.html';
+        // const params = new URLSearchParams(window.location.search);
+        // const sign = params.get('sign');
+        // var redirected = false;
+        //
+        // for(var i = 0;i < urls.length;i++){
+        //     if(i == sign){
+        //         window.location.href = urls[i];
+        //         redirected = true
+        //     }
+        // }
+        // if(!redirected){
+        //     window.location.href = url404;
+        // }
     </script>
 </body>
 </html>
