@@ -2,10 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0;url=http://36.134.22.54:8081/" />
-    <title>Page Redirect</title>
+    <!-- <meta http-equiv="refresh" content="0;url=http://36.134.22.54:8081/" /> -->
+    <title>Redirect</title>
 </head>
 <body>
     <!-- <p>You will be redirected to <a href="http://36.134.22.54:8081/">http://36.134.22.54:8081/</a> in 5 seconds.</p> -->
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const param1 = params.get('sign');
+        if(param1 == "1"){
+            window.location.href = 'http://36.134.22.54:8081';
+        }else if(param1 == "2"){
+            window.location.href = 'http://36.134.22.54:8082';
+        }else{
+            window.location.href = 'https://mbd.baidu.com/newspage/data/error';
+        }
+    </script>
 </body>
 </html>
