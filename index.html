@@ -1,41 +1,40 @@
-<!-- https://github.com/zhipanchen/page -->
-<!-- https://github.com/zhipanchen/page?sign=1 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <!-- <meta http-equiv="refresh" content="0;url=http://36.134.22.54:8081/" /> -->
-    <title>Redirect</title>
+    <title>redirect</title>
 </head>
-<body>
-    <a href='http://36.134.22.54:8081'>1.跳到页面</a>
-    <br>
-    <a href='http://36.134.22.54:8082'>2.跳到页面</a>
-    <br>
-    <a href='4041/404.html'>3.跳到页面</a>
-    <br>
-    <a href='404/404.html'>4.跳到页面</a>
-    <br>
+<body id="content">
+    <!-- <a href='http://36.134.22.54:8081'>1.摄像头</a><br>
+    <a href='http://36.134.22.54:8082'>2.文件下载</a><br>
+    <a href='4041/404.html'>3.跳到页面</a><br>
+    <a href='404/404.html'>4.跳到页面</a><br> -->
     <script>
-        // const urls = [
-        //     'http://36.134.22.54:8081',
-        //     'http://36.134.22.54:8082',
-        //     '4041/404.html'
-        // ]
-        // const url404 = '404/404.html';
-        // const params = new URLSearchParams(window.location.search);
-        // const sign = params.get('sign');
-        // var redirected = false;
-        //
-        // for(var i = 0;i < urls.length;i++){
-        //     if(i == sign){
-        //         window.location.href = urls[i];
-        //         redirected = true
-        //     }
-        // }
-        // if(!redirected){
-        //     window.location.href = url404;
-        // }
+        const main_url = "https://zhipanchen.github.io/page"
+        const url_list = [
+            ["1.摄像机",'http://36.134.22.54:8081'],
+            ["2.文件下载",'http://36.134.22.54:8082'],
+            ["3.404-1",'4041/404.html'],
+            ["4.404-2",'404/404.html']
+        ]
+        const params = new URLSearchParams(window.location.search);
+        const sign = params.get('sign');
+        if(sign != null){
+            for(var i = 0;i < url_list.length;i++){
+                if(i == sign){
+                window.location.href = url_list[i][1];
+                }
+            }
+        }else{
+            var content = document.getElementById("content");
+            var str ="";
+            for(var i = 0;i < url_list.length;i++){
+                str=str+"<a href='"+url_list[i][1]+"'>"+url_list[i][0]+"</a><br>"+
+                "<span>"+main_url+"?sign="+i+"</span><br><br>";
+            }
+            content.innerHTML = str;
+        }
     </script>
 </body>
 </html>
