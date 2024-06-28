@@ -6,10 +6,6 @@
     <title>redirect</title>
 </head>
 <body id="content">
-    <!-- <a href='http://36.134.22.54:8081'>1.摄像头</a><br>
-    <a href='http://36.134.22.54:8082'>2.文件下载</a><br>
-    <a href='4041/404.html'>3.跳到页面</a><br>
-    <a href='404/404.html'>4.跳到页面</a><br> -->
     <script>
         const main_url = "https://zhipanchen.github.io/page"
         const url_list = [
@@ -21,12 +17,14 @@
         const params = new URLSearchParams(window.location.search);
         const sign = params.get('sign');
         if(sign != null){
+            // sign跳转
             for(var i = 0;i < url_list.length;i++){
                 if(i == sign){
                 window.location.href = url_list[i][1];
                 }
             }
         }else{
+            // 无sign主界面
             var content = document.getElementById("content");
             var str ="";
             for(var i = 0;i < url_list.length;i++){
