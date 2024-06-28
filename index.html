@@ -17,7 +17,7 @@
         const params = new URLSearchParams(window.location.search);
         const sign = params.get('sign');
         if(sign != null){
-            // sign跳转
+            // 有sign跳转
             for(var i = 0;i < url_list.length;i++){
                 if(i == sign){
                 window.location.href = url_list[i][1];
