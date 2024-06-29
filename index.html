@@ -20,6 +20,14 @@
         ]
         const params = new URLSearchParams(window.location.search);
         const sign = params.get('sign');
+
+        //时间戳跳过前端缓存
+        const t = params.get('t');
+        if(sign == null && t == null){
+            var time = Date.now();
+            window.location.href = main_url+"?t="+time;
+        }
+
         if(sign != null){
             // 有sign跳转
             for(var i = 0;i < outside_url_list.length;i++){
