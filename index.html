@@ -1,57 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <!-- <meta http-equiv="refresh" content="0;url=http://36.134.22.54:8081/" /> -->
     <title>redirect</title>
 </head>
+
 <body id="content">
     <script>
         const main_url = "https://zhipanchen.github.io/page"
         const outside_url_list = [
-            ["1.摄像机",'http://36.134.22.54:8081'],
-            ["2.文件下载",'http://36.134.22.54:8082'],
-            ["3.404-1",'404_1/404.html'],
-            ["4.404-2",'404_2/404.html']
+            ["1.摄像机", 'http://36.134.22.54:8081'],
+            ["2.文件下载", 'http://36.134.22.54:8082'],
+            ["3.404-1", '404_1/404.html'],
+            ["4.404-2", '404_2/404.html']
         ]
         const inside_url_list = [
-            ["1.摄像机",'http://192.168.3.11:8080'],
-            ["2.文件下载",'http://192.168.3.13:8090'],
+            ["1.摄像机", 'http://192.168.3.11:8080'],
+            ["2.文件下载", 'http://192.168.3.13:8090'],
         ]
         const params = new URLSearchParams(window.location.search);
         const sign = params.get('sign');
 
         //时间戳跳过前端缓存
         const t = params.get('t');
-        if(sign == null && t == null){
+        if (sign == null && t == null) {
             var time = Date.now();
-            window.location.href = main_url+"?t="+time;
+            window.location.href = main_url + "?t=" + time;
         }
 
-        if(sign != null){
+        if (sign != null) {
             // 有sign跳转
-            for(var i = 0;i < outside_url_list.length;i++){
-                if(i == sign){
-                window.location.href = outside_url_list[i][1];
+            for (var i = 0; i < outside_url_list.length; i++) {
+                if (i == sign) {
+                    window.location.href = outside_url_list[i][1];
                 }
             }
-        }else{
+        } else {
             // 无sign主界面
             var content = document.getElementById("content");
-            var str ="<span>外网<span><br><br>";
-            for(var i = 0;i < outside_url_list.length;i++){
-                str=str+"<a href='"+outside_url_list[i][1]+"'>"+outside_url_list[i][0]+"</a><br>"+
-                "<span>"+main_url+"?sign="+i+"</span><br><br>";
+            var str = "<span>外网<span><br><br>";
+            for (var i = 0; i < outside_url_list.length; i++) {
+                str = str + "<a href='" + outside_url_list[i][1] + "'>" + outside_url_list[i][0] + "</a><br>" +
+                    "<span>" + main_url + "?sign=" + i + "</span><br><br>";
             }
-            var str = str+"<span>内网<span><br><br>";
-            for(var i = 0;i < inside_url_list.length;i++){
-                str=str+"<a href='"+inside_url_list[i][1]+"'>"+inside_url_list[i][0]+"</a><br>"+
-                "<span>"+inside_url_list[i][1]+"</span><br><br>";
+            var str = str + "<span>内网<span><br><br>";
+            for (var i = 0; i < inside_url_list.length; i++) {
+                str = str + "<a href='" + inside_url_list[i][1] + "'>" + inside_url_list[i][0] + "</a><br>" +
+                    "<span>" + inside_url_list[i][1] + "</span><br><br>";
             }
             content.innerHTML = str;
         }
 
-        
+
     </script>
 </body>
+
 </html>
