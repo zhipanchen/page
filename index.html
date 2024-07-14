@@ -21,6 +21,10 @@
             ["1.摄像机", 'http://192.168.3.11:8080/browserfs.html'],
             ["2.文件下载", 'http://192.168.3.13:8090'],
         ]
+        const vpn_url_list = [
+            ["1.摄像机", 'http://10.6.22.1:8080/browserfs.html'],
+            ["2.文件下载", 'http://10.6.22.1:8090'],
+        ]
         const params = new URLSearchParams(window.location.search);
         const sign = params.get('sign');
 
@@ -50,6 +54,11 @@
             for (var i = 0; i < inside_url_list.length; i++) {
                 str = str + "<a href='" + inside_url_list[i][1] + "'>" + inside_url_list[i][0] + "</a><br>" +
                     "<span>" + inside_url_list[i][1] + "</span><br><br>";
+            }
+            var str = str + "<span>异地组网<span><br><br>";
+            for (var i = 0; i < vpn_url_list.length; i++) {
+                str = str + "<a href='" + vpn_url_list[i][1] + "'>" + vpn_url_list[i][0] + "</a><br>" +
+                    "<span>" + vpn_url_list[i][1] + "</span><br><br>";
             }
             content.innerHTML = str;
         }
