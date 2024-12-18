@@ -1,7 +1,1 @@
-git pull origin master
-
-git add .
-
-git commit -m commit
-
-git push -u origin master
+qwertyhttp://13f52c2.r6.cpolar.cnqwerty
